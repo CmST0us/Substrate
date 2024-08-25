@@ -630,8 +630,8 @@ struct ExecutorAtomicLinearProbingMap {
     
     @inlinable
     public var bucketIndexForCurrentThread: Int {
-        let threadID = pthread_self()
-        return self.bucketIndex(for: UnsafeRawPointer(threadID))
+        var threadID = pthread_self()
+        return self.bucketIndex(for: UnsafeRawPointer(&threadID))
     }
 }
 
