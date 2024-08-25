@@ -69,8 +69,10 @@ extension ArgumentDescriptor.ArgumentResourceType: CustomStringConvertible {
             return "constantBuffer(alignment: \(alignment))"
         case .storageBuffer:
             return "storageBuffer"
+#if canImport(Metal)
         case .argumentBuffer:
             return "argumentBuffer"
+#endif
         case .texture(let type):
             let typeString = String(describing: type)
             return "texture(type: .\(typeString))"
